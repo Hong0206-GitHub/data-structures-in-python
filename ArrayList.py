@@ -22,7 +22,7 @@ class ArrayList:
             return self.array[index]
         return None
     
-    # Insert elem into array at position index
+    # Insert elem into array at position index if it is not full and index is not out of bounds
     def insert(self, index, elem):
         if not self.isFull() and 0 <= index <= self.size:
             for i in range(self.size, index, -1):
@@ -45,14 +45,44 @@ class ArrayList:
         else:
             raise IndexError("Array is empty or index is out of bounds")
         
+    # Returns the index of the given element, or -1 if not found
+    def indexOf(self, elem):
+        for i in range(self.size):
+            if elem == self.array[i]:
+                return i
+        return -1
+
+    # Clears all elements in the array
+    def clear(self):
+        self.array = [None] * self.capacity
+        self.size = 0
+
+    # Replaces the element at the given index with a new value
+    def replace(self, index, elem):
+        if 0 <= index < self.size:
+            self.array[index] = elem
+        else:
+            raise IndexError("Index out of bounds")
+
+    # Converts the array list to a regular Python list
+    def toList(self):
+        return list(self.array[:self.size])
+
+    # Returns True if the element exists in the array
+    def contains(self, elem):
+        return self.indexOf(elem) != -1 
+
+    
     # Return string representation of the list (only valid elements)
     def __str__(self):
         return str(self.array[0:self.size])
     
 
 
-
 # test code
+# Create an ArrayList with capacity 5
+# Insert elements at specific positions
+# Delete an element at index 1
 if __name__ == "__main__":
     alist = ArrayList(5)
     alist.insert(0, 10)
@@ -61,3 +91,23 @@ if __name__ == "__main__":
     print(alist)  # [10, 15, 20]
     alist.delete(1)
     print(alist)  # [10, 20]
+    
+    # Test: indexOf()
+    print(alist.indexOf(10))  # Expected output: 0 (10 is at index 0)
+    print(alist.indexOf(99))  # Expected output: -1 (99 is not in the list)
+
+    # Test: contains()
+    print(alist.contains(20))  # Expected output: True
+    print(alist.contains(99))  # Expected output: False
+
+    # Test: replace()
+    alist.replace(1, 30)       
+    print(alist)  # Expected output: [10, 30] (20 replaced with 30)
+
+    # Test: toList()
+    print(alist.toList())  # Expected output: [10, 30]
+
+    # Test: clear()
+    alist.clear()
+    print(alist)         # Expected output: [] (list is cleared)
+    print(alist.isEmpty())  # Expected output: True
