@@ -6,11 +6,12 @@ This repository contains basic data structure implementations written in Python 
 
 - [x] ArrayList
 - [x] ArraySet
+- [x] ArrayStack
+
 
 ## 🚧 Upcoming (planned)
 
 
-- [ ] ArrayStack
 - [ ] ArrayQueue
 - [ ] ArrayDeque
 - [ ] CircularQueue
