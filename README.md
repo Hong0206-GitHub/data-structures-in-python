@@ -8,11 +8,11 @@ This repository contains basic data structure implementations written in Python 
 - [x] ArraySet
 - [x] ArrayStack
 - [x] ArrayQueue
+- [ ] 🔧 ArrayDeque (in progress)
 
       
 ## 🚧 Upcoming (planned)
 
-- [ ] ArrayDeque
 - [ ] CircularQueue
 - [ ] PriorityQueue
 - [ ] CircularDeque
