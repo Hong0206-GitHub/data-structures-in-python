@@ -8,12 +8,12 @@ class ArraySet:
     
     # Check set is empty
     # Return True if set is empty
-    def isEmpty(self):
+    def is_empty(self):
         return self.size == 0
 
     # Check set is full
     # Return True if set is full
-    def isFull(self):
+    def is_full(self):
         return self.size == self.capacity
 
     # Return string representation of the set (only valid elements)
@@ -29,7 +29,7 @@ class ArraySet:
 
     # Insert element into the set if it is not full and element is not already present
     def insert(self, elem):
-        if not self.isFull() and not self.contains(elem):
+        if not self.is_full() and not self.contains(elem):
             self.set[self.size] = elem
             self.size += 1
         else:
@@ -77,7 +77,7 @@ class ArraySet:
     
 
     # Returns True if all elements in this set are also in the other set
-    def isSubset(self, other):
+    def is_subset(self, other):
         if self.size > other.size:
             return False
         
@@ -92,11 +92,11 @@ class ArraySet:
                 return False
         return True
 
-    # Returns True if both sets contain the same elements
-    def isEqual(self, other):
+    # Return True if this set and the other set contain exactly the same elements
+    def is_equal(self, other):
         if self.size != other.size:
             return False
-        if self.isSubset(other):
+        if self.is_subset(other):
             return True
         return False
 
@@ -106,7 +106,7 @@ class ArraySet:
         self.size = 0
 
     # Returns a list of the valid elements
-    def toList(self):
+    def to_list(self):
         return list(self.set[:self.size])
 
     # Returns a deep copy of the set
@@ -155,25 +155,25 @@ if __name__ == "__main__":
     s5 = s1.difference(s2)
     print("s1 - s2:", s5)  # [1]
 
-    # Test isSubset
+    # Test is_subset
     subset = ArraySet()
     subset.insert(1)
     print("subset:", subset)
-    print("subset ⊆ s1:", subset.isSubset(s1))  # True
-    print("s1 ⊆ subset:", s1.isSubset(subset))  # False
+    print("subset ⊆ s1:", subset.is_subset(s1))  # True
+    print("s1 ⊆ subset:", s1.is_subset(subset))  # False
 
-    # Test isEqual
+    # Test is_equal
     equalSet = ArraySet()
     equalSet.insert(1)
     equalSet.insert(3)
-    print("s1 == equalSet:", s1.isEqual(equalSet))  # True
+    print("s1 == equalSet:", s1.is_equal(equalSet))  # True
 
     # Test clear
     s5.clear()
     print("s5 after clear():", s5)  # []
 
-    # Test toList
-    print("s1 to list:", s1.toList())  # [1, 3]
+    # Test to_list
+    print("s1 to list:", s1.to_list())  # [1, 3]
 
     # Test copy
     s6 = s1.copy()

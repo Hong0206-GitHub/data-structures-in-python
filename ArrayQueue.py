@@ -11,18 +11,18 @@ class ArrayQueue:
 
     # Check queue is empty
     # Return True if queue is empty
-    def isEmpty(self):
+    def is_empty(self):
         return self.rear == -1
 
     # Check queue is full
     # Return True if queue is full
-    def isFull(self):
+    def is_full(self):
         return self.rear == self.capacity - 1
 
     # Add an element to the end of the queue.
     # Raises OverflowError if the queue has reached its maximum capacity.
     def enqueue(self, elem):
-        if not self.isFull():
+        if not self.is_full():
             self.rear += 1
             self.queue[self.rear] = elem
         else:
@@ -31,7 +31,7 @@ class ArrayQueue:
     # Remove and return the first element of the queue
     # Raises IndexError if the queue is empty
     def dequeue(self):
-        if not self.isEmpty():
+        if not self.is_empty():
             value = self.queue[self.front]
             for i in range(self.front, self.rear):
                 self.queue[i] = self.queue[i + 1]
@@ -44,21 +44,21 @@ class ArrayQueue:
     # Return the front element of the queue without removing it.
     # Raises IndexError if the queue is empty.
     def peek(self):
-        if not self.isEmpty():
+        if not self.is_empty():
             return self.queue[self.front]
         else:
             raise IndexError("Queue is empty")
 
     # Return string representation of the queue (only valid elements)
     def __str__(self):
-        if not self.isEmpty():
+        if not self.is_empty():
             return str(self.queue[self.front:self.rear + 1])
         else:
             return "[]"
         
-    # Returns the number of elements currently in the queue
+    # Returns the number of elements in the queue (from front to rear)
     def size(self):
-        return self.rear + 1 if not self.isEmpty() else 0
+        return self.rear + 1 if not self.is_empty() else 0
     
     # Removes all elements from the queue and resets it to empty state
     def clear(self):
@@ -66,7 +66,7 @@ class ArrayQueue:
         self.queue = [None] * self.capacity
         
     # Returns a list of the valid elements in the queue (in order)
-    def toList(self):
+    def to_list(self):
         return list(self.queue[self.front:self.rear + 1])
     
     # Returns True if the given element exists in the queue
@@ -77,11 +77,11 @@ class ArrayQueue:
         return False
     
     # Returns True if the given element is at the front of the queue
-    def isFront(self, elem):
+    def is_front(self, elem):
         return self.queue[self.front] == elem
     
     # Returns True if the given element exists in the queue
-    def isRear(self, elem):
+    def is_rear(self, elem):
         return self.queue[self.rear] == elem
     
     
@@ -107,20 +107,20 @@ if __name__ == "__main__":
     # Test: size
     print("Current size:", q.size())  # 3
 
-    # Test: toList
-    print("Queue as list:", q.toList())  # [10, 20, 30]
+    # Test: to_list
+    print("Queue as list:", q.to_list())  # [10, 20, 30]
 
     # Test: contains
     print("Contains 20?", q.contains(20))  # True
     print("Contains 40?", q.contains(40))  # False
 
-    # Test: isFront
-    print("Is 10 at front?", q.isFront(10))  # True
-    print("Is 20 at front?", q.isFront(20))  # False
+    # Test: is_front
+    print("Is 10 at front?", q.is_front(10))  # True
+    print("Is 20 at front?", q.is_front(20))  # False
 
-    # Test: isRear
-    print("Is 30 at rear?", q.isRear(30))  # True
-    print("Is 20 at rear?", q.isRear(20))  # False
+    # Test: is_rear
+    print("Is 30 at rear?", q.is_rear(30))  # True
+    print("Is 20 at rear?", q.is_rear(20))  # False
 
     # Test: dequeue
     print("Dequeued:", q.dequeue())  # 10
@@ -130,8 +130,8 @@ if __name__ == "__main__":
     q.clear()
     print("Queue after clear:", q)  # []
 
-    # Test: isEmpty after clear
-    print("Is empty?", q.isEmpty())  # True
+    # Test: is_empty after clear
+    print("Is empty?", q.is_empty())  # True
 
     # Test: peek on empty (should raise error)
     try:

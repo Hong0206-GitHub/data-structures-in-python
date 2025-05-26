@@ -8,18 +8,18 @@ class ArrayStack:
 
     # Check if the stack is empty
     # Returns True if it is empty
-    def isEmpty(self):
+    def is_empty(self):
         return self.top == -1
     
     # Check if the stack is full
     # Returns True if it is full
-    def isFull(self):
+    def is_full(self):
         return self.top == self.capacity - 1
         
     # Push element onto the stack if it is not full
     # Raises OverflowError if the stack is full
     def push(self, elem):
-        if not self.isFull():
+        if not self.is_full():
             self.top += 1
             self.stack[self.top] = elem
         else:
@@ -28,7 +28,7 @@ class ArrayStack:
     # Remove and return the top element of the stack
     # Raises IndexError if the stack is empty
     def pop(self):
-        if not self.isEmpty():
+        if not self.is_empty():
             value = self.stack[self.top]
             self.stack[self.top] = None
             self.top -= 1
@@ -39,7 +39,7 @@ class ArrayStack:
     # Return the top element without removing it
     # Raises IndexError if the stack is empty
     def peek(self):
-        if not self.isEmpty():
+        if not self.is_empty():
             return self.stack[self.top]
         else:
             raise IndexError("Stack is empty")
@@ -54,7 +54,7 @@ class ArrayStack:
         self.stack = [None] * self.capacity
 
     # Returns a list of the elements in the stack (bottom to top)
-    def toList(self):
+    def to_list(self):
         return self.stack[:self.top + 1]
 
     # Return string representation of the stack (only valid elements)
@@ -81,22 +81,22 @@ if __name__ == "__main__":
     # Test: size
     print("Current size:", stack.size())  # 3
 
-    # Test: toList
-    print("Stack as list:", stack.toList())  # [10, 20, 30]
+    # Test: to_list
+    print("Stack as list:", stack.to_list())  # [10, 20, 30]
 
     # Test: pop
     print("Popped:", stack.pop())  # 30
     print("Stack after pop:", stack)  # [10, 20]
 
-    # Test: isEmpty
-    print("Is empty?", stack.isEmpty())  # False
+    # Test: is_empty
+    print("Is empty?", stack.is_empty())  # False
 
     # Test: clear
     stack.clear()
     print("Stack after clear:", stack)  # []
 
-    # Test: isEmpty after clear
-    print("Is empty after clear?", stack.isEmpty())  # True
+    # Test: is_empty after clear
+    print("Is empty after clear?", stack.is_empty())  # True
 
     # Test: peek on empty (should raise error)
     try:
