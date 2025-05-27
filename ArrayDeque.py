@@ -92,31 +92,36 @@ class ArrayDeque:
 
     # Removes all elements from the deque and resets it to empty state
     def clear(self):
-        pass
+        self.rear = -1
+        self.deque = [None] * self.capacity
 
     # Returns True if the element exists in the deque
     def contains(self, elem):
-        pass
+        for i in range(self.rear + 1):
+            if elem == self.deque[i]:
+                return True
+        return False
 
     # Returns a list of valid elements in the deque (from front to rear)
     def to_list(self):
-        pass
+        return list(self.deque[:self.rear + 1]) if not self.is_empty() else list()
 
     # Returns the index of the front element
     def get_front_index(self):
-        pass
+        return 0
 
     # Returns the index of the rear element
     def get_rear_index(self):
-        pass
+        return self.rear
 
     # Returns True if the given element is at the front
     def is_front(self, elem):
-        pass
+        return self.deque[self.front] == elem
 
     # Returns True if the given element is at the rear
     def is_rear(self, elem):
-        pass
+        return self.deque[self.rear] == elem
+    
 
 
 if __name__ == "__main__":
@@ -142,20 +147,21 @@ if __name__ == "__main__":
     print("Current size:", dq.get_size())  # 1
 
     # Test: clear (currently not implemented)
-    # dq.clear()
-    # print("Deque after clear:", dq)  # []
+    dq.clear()
+    print("Deque after clear:", dq)  # []
 
     # Test: contains (currently not implemented)
-    # print("Contains 10?", dq.contains(10))  # True
-    # print("Contains 99?", dq.contains(99))  # False
+    dq.add_front(10)
+    print("Contains 10?", dq.contains(10))  # True
+    print("Contains 99?", dq.contains(99))  # False
 
     # Test: to_list (currently not implemented)
-    # print("Deque as list:", dq.to_list())  # [10]
+    print("Deque as list:", dq.to_list())  # [10]
 
     # Test: get_front_index and get_rear_index (not implemented)
-    # print("Front index:", dq.get_front_index())  # Expected: 0
-    # print("Rear index:", dq.get_rear_index())    # Expected: 0
+    print("Front index:", dq.get_front_index())  # Expected: 0
+    print("Rear index:", dq.get_rear_index())    # Expected: 0
 
     # Test: is_front and is_rear (not implemented)
-    # print("Is 10 at front?", dq.is_front(10))  # True
-    # print("Is 10 at rear?", dq.is_rear(10))    # True
+    print("Is 10 at front?", dq.is_front(10))  # True
+    print("Is 10 at rear?", dq.is_rear(10))    # True
