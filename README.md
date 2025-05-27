@@ -23,8 +23,8 @@ Each data structure is implemented from scratch without using built-in collectio
 | `ArraySet.py`    | Array Set      | Set using list (no duplicates allowed)                           | Search/Insert/Delete O(n)                  |
 | `ArrayStack.py`  | Array Stack    | Stack (LIFO) using array                                         | Push/Pop/Peek O(1)                         |
 | `ArrayQueue.py`  | Array Queue    | Queue (FIFO) using array (shift elements on dequeue)             | Enqueue O(1), Dequeue O(n)                 |
-| `ArrayDeque.py`  | Array Deque    | Double-ended queue (front/rear enqueue and dequeue)              | add_front/remove_front/clear               |
-|                  |                |                                                                  | /contains/to_list O(n)         other O(1)  |
+| `ArrayDeque.py`  | Array Deque    | Double-ended queue (front/rear enqueue and dequeue)              | add_front/remove_front/clear/contains/to_list O(n) other O(1)  |
+
 
 > 🔸 All classes are implemented using basic Python constructs and support common operations such as `is_empty()`, `size()`, and `__str__()` where applicable.
 
