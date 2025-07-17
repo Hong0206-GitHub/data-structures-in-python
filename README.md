@@ -12,19 +12,20 @@ Each data structure is implemented from scratch without using built-in collectio
 ├── ArrayStack.py
 ├── ArrayQueue.py
 ├── ArrayDeque.py
+├── CircularQueue.py
 └── README.md
 ```
 
 ## ✅ Implemented Data Structures
 
-| File Name        | Data Structure | Description                                                      |
-|------------------|----------------|------------------------------------------------------------------|
-| `ArrayList.py`   | Array List     | Dynamic array with append, insert, delete                        |
-| `ArraySet.py`    | Array Set      | Set using list (no duplicates allowed)                           |
-| `ArrayStack.py`  | Array Stack    | Stack (LIFO) using array                                         |
-| `ArrayQueue.py`  | Array Queue    | Queue (FIFO) using array (shift elements on dequeue)             |
-| `ArrayDeque.py`  | Array Deque    | Double-ended queue (front/rear enqueue and dequeue)              |
-
+| File Name           | Data Structure  | Description                                                      |
+|---------------------|------------------|------------------------------------------------------------------|
+| `ArrayList.py`      | Array List       | Dynamic array with append, insert, delete                        |
+| `ArraySet.py`       | Array Set        | Set using list (no duplicates allowed)                           |
+| `ArrayStack.py`     | Array Stack      | Stack (LIFO) using array                                         |
+| `ArrayQueue.py`     | Array Queue      | Queue (FIFO) using array (shift elements on dequeue)             |
+| `ArrayDeque.py`     | Array Deque      | Double-ended queue (front/rear enqueue and dequeue)              |
+| `CircularQueue.py`  | Circular Queue   | Fixed-size circular queue with modular index handling            |
 
 > 🔸 All classes are implemented using basic Python constructs and support common operations such as `is_empty()`, `size()`, and `__str__()` where applicable.
 
@@ -32,7 +33,7 @@ Each data structure is implemented from scratch without using built-in collectio
 
 ## 🏗️ Planned Features
 
-- [ ] CircularQueue
+- [x] CircularQueue
 - [ ] PriorityQueue (Max-Heap)
 - [ ] LinkedList (Singly, Doubly)
 - [ ] Binary Tree (with traversal)
@@ -91,6 +92,18 @@ dq = ArrayDeque()
 dq.add_front(1)
 dq.add_rear(2)
 print(dq.remove_front())  # Output: 1
+```
+
+### 🔹 CircularQueue
+```python
+from CircularQueue import CircularQueue
+
+cq = CircularQueue(5)
+cq.enqueue(10)
+cq.enqueue(20)
+print(cq.dequeue())  # Output: 10
+print(cq.peek())     # Output: 20
+print(cq.is_full())  # Output: False
 ```
 
 ---
