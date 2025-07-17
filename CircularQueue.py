@@ -1,5 +1,4 @@
 class CircularQueue:
-
     # Constructor: sets maximum capacity of the queue
     # front points to the position before the first element
     # rear points to the last inserted element
@@ -35,11 +34,10 @@ class CircularQueue:
             self.front = (self.front + 1) % self.capacity
             value = self.queue[self.front]
             self.queue[self.front] = None
-            
             return value
         else:
             raise IndexError("Queue is empty")
-        
+
     # Return the front element of the queue without removing it.
     # Raises IndexError if the queue is empty.        
     def peek(self):
@@ -57,32 +55,41 @@ class CircularQueue:
         else:
             return str(self.queue[self.front + 1:self.capacity] + self.queue[0:self.rear + 1])
 
-
     # Return the number of elements currently in the queue
     def size(self):
-        pass
+        return (self.rear - self.front + self.capacity) % self.capacity
 
     # Remove all elements from the queue and reset it to empty state
     def clear(self):
-        pass
+        self.queue = [None] * self.capacity
+        self.front = 0
+        self.rear = 0
 
     # Return True if element is present in the queue
     def contains(self, elem):
-        pass
+        i = (self.front + 1) % self.capacity
+        while i != (self.rear + 1) % self.capacity:
+            if self.queue[i] == elem:
+                return True
+            i = (i + 1) % self.capacity
+        return False
 
     # Return a list of all valid elements in queue order
     def to_list(self):
-        pass
+        result = []
+        i = (self.front + 1) % self.capacity
+        while i != (self.rear + 1) % self.capacity:
+            result.append(self.queue[i])
+            i = (i + 1) % self.capacity
+        return result
 
     # Return the capacity of the queue
     def get_capacity(self):
-        pass
+        # 실제 사용 가능한 용량은 capacity - 1
+        return self.capacity - 1
 
 
-
-
-
-
+# test code
 if __name__ == "__main__":
     # Create a queue with capacity 5
     cq = CircularQueue(5)
@@ -117,19 +124,20 @@ if __name__ == "__main__":
     # Check if queue is empty
     print("Is empty?", cq.is_empty())
 
-    # # Check size of the queue
-    # print("Size:", cq.size())
+    # Check size of the queue
+    print("Size:", cq.size())
 
-    # # Clear the queue
-    # cq.clear()
-    # print("After clear:", cq)
+    # Check contains
+    print("Contains 20?", cq.contains(20))
+    print("Contains 100?", cq.contains(100))
 
-    # # Check contains
-    # print("Contains 20?", cq.contains(20))
-    # print("Contains 100?", cq.contains(100))
+    # Get list of elements
+    print("Elements in queue:", cq.to_list())
 
-    # # Get list of elements
-    # print("Elements in queue:", cq.to_list())
+    # Get capacity
+    print("Capacity:", cq.get_capacity())
 
-    # # Get capacity
-    # print("Capacity:", cq.get_capacity())
+    # Clear the queue
+    cq.clear()
+    print("After clear:", cq)
+    print("Is empty after clear?", cq.is_empty())
